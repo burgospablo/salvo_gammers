@@ -25,7 +25,7 @@ namespace Salvo
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
-            //inyeccion de dependencia para salvo context
+            //Inyección de dependencia para salvo context
             services.AddDbContext<SalvoContext>(opt => opt.UseSqlServer(Configuration.GetConnectionString("SalvoDataBase")));
         }
 

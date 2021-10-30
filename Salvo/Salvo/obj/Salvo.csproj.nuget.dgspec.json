@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\pablo\\Downloads\\Salvo\\Salvo\\Salvo.csproj": {}
+    "C:\\Users\\pablo\\source\\repos\\Compra_Gammers\\salvo_gammers\\salvo_gammers\\Salvo\\Salvo\\Salvo.csproj": {}
   },
   "projects": {
-    "C:\\Users\\pablo\\Downloads\\Salvo\\Salvo\\Salvo.csproj": {
+    "C:\\Users\\pablo\\source\\repos\\Compra_Gammers\\salvo_gammers\\salvo_gammers\\Salvo\\Salvo\\Salvo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\pablo\\Downloads\\Salvo\\Salvo\\Salvo.csproj",
+        "projectUniqueName": "C:\\Users\\pablo\\source\\repos\\Compra_Gammers\\salvo_gammers\\salvo_gammers\\Salvo\\Salvo\\Salvo.csproj",
         "projectName": "Salvo",
-        "projectPath": "C:\\Users\\pablo\\Downloads\\Salvo\\Salvo\\Salvo.csproj",
+        "projectPath": "C:\\Users\\pablo\\source\\repos\\Compra_Gammers\\salvo_gammers\\salvo_gammers\\Salvo\\Salvo\\Salvo.csproj",
         "packagesPath": "C:\\Users\\pablo\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\pablo\\Downloads\\Salvo\\Salvo\\obj\\",
+        "outputPath": "C:\\Users\\pablo\\source\\repos\\Compra_Gammers\\salvo_gammers\\salvo_gammers\\Salvo\\Salvo\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\pablo\\AppData\\Roaming\\NuGet\\NuGet.Config",
