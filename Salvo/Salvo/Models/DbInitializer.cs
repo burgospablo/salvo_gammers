@@ -30,6 +30,32 @@ namespace Salvo.Models
                 context.SaveChanges();
             }
 
+            // Chequeo si hay juegos, si no hay agrego juegos
+            if (!context.Games.Any()) // sino existe alguno si quiera agregalo o de otra forma seria: context.Games.Any() == false
+            {
+                var games = new Game[]
+                {
+                //Inicializo con fecha y hora actual
+                new Game { CreationDate = DateTime.Now},
+                //Agrego 1 hora al anterior
+                new Game { CreationDate = DateTime.Now.AddHours(1) },
+                new Game { CreationDate = DateTime.Now.AddHours(2) },
+                new Game { CreationDate = DateTime.Now.AddHours(3) },
+                new Game { CreationDate = DateTime.Now.AddHours(4) },
+                new Game { CreationDate = DateTime.Now.AddHours(5) },
+                new Game { CreationDate = DateTime.Now.AddHours(6) },
+                new Game { CreationDate = DateTime.Now.AddHours(7) },
+                };
+                //recorre los games
+                foreach (Game g in games)
+                {
+                    context.Games.Add(g);
+                }
+                //guardo los cambios
+                context.SaveChanges();
+            }
+
+
         }
     }
 }
