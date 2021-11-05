@@ -13,7 +13,7 @@ namespace Salvo.Repositories
         
         //Entrega todos los registros de la clase T
         IQueryable<T> FindAll();
-        IQueryable<T> FindAll(Func<IQueryable<T> ,IIncludableQueryable<T,object>> includes = null);
+        IQueryable<T> FindAll(Func<IQueryable<T>, IIncludableQueryable<T, object>> includes = null);
         //Entrega todos los registros de la clase T que cumpla la expresion
         IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression);
         //Crea un registro de esta clase T

@@ -15,7 +15,7 @@ namespace Salvo.Models
         //Agrego al contexto el modelo que seria: la clase Player
         public DbSet<Player> Players { get; set; }
         public DbSet<Game> Games { get; set; }
-        //public DbSet<GamePlayer> GamesPlayers { get; set; }
-
+        public DbSet<GamePlayer> GamePlayers { get; set; }
+       
     }
 }

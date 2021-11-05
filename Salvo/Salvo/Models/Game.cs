@@ -10,6 +10,6 @@ namespace Salvo.Models
         public long Id { get; set; }
         //Agrego el signo de preguntas para que c# interprete que acepta valores nulos
         public DateTime? CreationDate { get; set; }
-        //public ICollection<GamePlayer> GamePlayers { get; set; }
+        public ICollection<GamePlayer> GamePlayers { get; set; }
     }
 }

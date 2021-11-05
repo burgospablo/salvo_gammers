@@ -47,6 +47,7 @@ namespace Salvo.Repositories
                 this.RepositoryContext.Set<T>().Remove(entity);
             }
 
+        //Recibe como parametro una consulta
         public IQueryable<T> FindAll(Func<IQueryable<T>, IIncludableQueryable<T, object>> includes = null)
         {
             IQueryable<T> queryable=this.RepositoryContext.Set<T>();
@@ -56,6 +57,8 @@ namespace Salvo.Repositories
             }
             return queryable.AsNoTracking();
         }
+
+     
     }
 }
 
