@@ -21,6 +21,9 @@ namespace Salvo.Models
 
         public DbSet<ShipLocation> ShipLocations { get; set; }
 
+        public DbSet<Salvo> Salvos { get; set; }
+        public DbSet<SalvoLocation> SalvoLocations { get; set; }
+
 
     }
 }
