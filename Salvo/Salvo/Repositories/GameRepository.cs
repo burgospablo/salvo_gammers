@@ -1,9 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Salvo.Models;
-using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Salvo.Repositories
 {
@@ -12,14 +10,22 @@ namespace Salvo.Repositories
     {
         public GameRepository(SalvoContext repositoryContext) : base(repositoryContext)
         {
-           // this.GameRepository = repositoryContext;
+            // this.GameRepository = repositoryContext;
+        }
+
+        public Game FindById(long id)
+        {
+            return FindByCondition(game => game.Id == id)
+                    .Include(game => game.GamePlayers)
+                        .ThenInclude(gp => gp.Player)
+                    .FirstOrDefault();
         }
 
         public IEnumerable<Game> GetAllGames()
         {
             //Retorno todos los elementos de game de forma ordenada mediante 
             //su fecha de creacion y que sea una lista de games
-            return FindAll().OrderBy(game=>game.CreationDate).ToList();
+            return FindAll().OrderBy(game => game.CreationDate).ToList();
         }
 
 
@@ -32,7 +38,8 @@ namespace Salvo.Repositories
             //GamePlayers, pero ademas de los gameplayer incluye el Player
             //Ademas los ordena por fecha de creacion y que todo lo retorne como una lista
             return FindAll(source => source.Include(game => game.GamePlayers)
-                    .ThenInclude(gameplayer => gameplayer.Player))
+                    .ThenInclude(gameplayer => gameplayer.Player)
+                        .ThenInclude(player => player.Scores))
                 .OrderBy(game => game.CreationDate)
                 .ToList();
         }

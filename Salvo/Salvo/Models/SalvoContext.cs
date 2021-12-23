@@ -1,15 +1,11 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Salvo.Models
 {
     public class SalvoContext : DbContext
     {
         //Constructor
-        public SalvoContext(DbContextOptions<SalvoContext> options):base(options)
+        public SalvoContext(DbContextOptions<SalvoContext> options) : base(options)
         {
         }
         //Agrego al contexto el modelo que seria: la clase Player
@@ -24,6 +20,6 @@ namespace Salvo.Models
         public DbSet<Salvo> Salvos { get; set; }
         public DbSet<SalvoLocation> SalvoLocations { get; set; }
 
-
+        public DbSet<Score> Scores { get; set; }
     }
 }

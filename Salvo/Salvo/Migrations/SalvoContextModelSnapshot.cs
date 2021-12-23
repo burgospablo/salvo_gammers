@@ -120,6 +120,34 @@ namespace Salvo.Migrations
                     b.ToTable("SalvoLocations");
                 });
 
+            modelBuilder.Entity("Salvo.Models.Score", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime?>("FinishDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long>("GameId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("PlayerId")
+                        .HasColumnType("bigint");
+
+                    b.Property<double>("Point")
+                        .HasColumnType("float");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GameId");
+
+                    b.HasIndex("PlayerId");
+
+                    b.ToTable("Scores");
+                });
+
             modelBuilder.Entity("Salvo.Models.Ship", b =>
                 {
                     b.Property<long>("Id")
@@ -201,6 +229,25 @@ namespace Salvo.Migrations
                     b.Navigation("Salvo");
                 });
 
+            modelBuilder.Entity("Salvo.Models.Score", b =>
+                {
+                    b.HasOne("Salvo.Models.Game", "Game")
+                        .WithMany("Scores")
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Salvo.Models.Player", "Player")
+                        .WithMany("Scores")
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Game");
+
+                    b.Navigation("Player");
+                });
+
             modelBuilder.Entity("Salvo.Models.Ship", b =>
                 {
                     b.HasOne("Salvo.Models.GamePlayer", "GamePlayer")
@@ -226,6 +273,8 @@ namespace Salvo.Migrations
             modelBuilder.Entity("Salvo.Models.Game", b =>
                 {
                     b.Navigation("GamePlayers");
+
+                    b.Navigation("Scores");
                 });
 
             modelBuilder.Entity("Salvo.Models.GamePlayer", b =>
@@ -238,6 +287,8 @@ namespace Salvo.Migrations
             modelBuilder.Entity("Salvo.Models.Player", b =>
                 {
                     b.Navigation("GamePlayers");
+
+                    b.Navigation("Scores");
                 });
 
             modelBuilder.Entity("Salvo.Models.Salvo", b =>

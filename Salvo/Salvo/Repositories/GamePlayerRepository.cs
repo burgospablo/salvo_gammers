@@ -1,9 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Salvo.Models;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
 
 namespace Salvo.Repositories
 {
@@ -12,6 +9,32 @@ namespace Salvo.Repositories
         public GamePlayerRepository(SalvoContext repositoryContext) : base(repositoryContext)
         {
         }
+
+        /*-----------------------------Actividad 10------------------------------*/
+        public GamePlayer FindById(long id)
+        {
+            //trae los datos directo de la BD 
+            return FindByCondition(gp => gp.Id == id)
+                 .Include(gp => gp.Game)
+                        .ThenInclude(game => game.GamePlayers)
+                            .ThenInclude(gp => gp.Salvos)
+                 .Include(gp => gp.Game)
+                        .ThenInclude(game => game.GamePlayers)
+                            .ThenInclude(gp => gp.Ships)
+                 .Include(gp => gp.Player)
+                 .Include(gp => gp.Ships)
+                 .Include(gp => gp.Salvos)
+                 .FirstOrDefault();
+        }
+
+        //public GamePlayer FindById(long id)
+        //{
+        //    //trae los datos directo de la BD 
+        //    return FindByCondition(gp => gp.Id == id)
+        //         .Include(gp => gp.Player)
+        //         .Include(gp => gp.Ships)
+        //         .FirstOrDefault();
+        //}
 
         //public GamePlayer GetGamePlayerView(long idGamePlayer)
         //{
@@ -47,6 +70,15 @@ namespace Salvo.Repositories
                 .Where(gamePlayer => gamePlayer.Id == idGamePlayer)
                 .OrderBy(game => game.JoinDate)
                 .FirstOrDefault();
+        }
+
+        public void Save(GamePlayer gamePlayer)
+        {
+            if (gamePlayer.Id == 0)
+                Create(gamePlayer);
+            else
+                Update(gamePlayer);
+            SaveChanges();
         }
     }
 }
